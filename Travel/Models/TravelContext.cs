@@ -19,6 +19,16 @@ namespace Travel.Models
         {
         }
 
-        // add seeded data here after inital migration
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+          base.OnModelCreating(builder);
+            builder.Entity<Destination>()
+              .HasData(
+
+                  new Destination { DestinationId = 1, City = "London", Country = "England"},
+                  new Destination { DestinationId = 2, City = "Amsterdam", Country = "Netherlands"},
+                  new Destination { DestinationId = 3, City = "Berlin", Country = "Germany"}
+              );
+        }
     }
 }
