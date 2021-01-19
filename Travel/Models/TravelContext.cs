@@ -11,6 +11,7 @@ namespace Travel.Models
         {
         }
 
+        public DbSet<Review> Reviews { get; set; }
         public DbSet<Destination> Destinations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
