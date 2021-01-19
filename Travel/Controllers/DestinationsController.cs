@@ -47,20 +47,28 @@ namespace Travel.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Destination destination)
         {
+            _db.Destinations.Add(destination);
+            _db.SaveChanges();
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Destination destination)
         {
+            destination.DestinationId = id;
+            _db.Entry(destination).State = EntityState.Modified;
+            _db.SaveChanges();
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var destinationToDelete = _db.Destinations.FirstOrDefault(entry => entry.DestinationId == id);
+            _db.Destinations.Remove(destinationToDelete);
+            _db.SaveChanges();
         }
     }
 }
