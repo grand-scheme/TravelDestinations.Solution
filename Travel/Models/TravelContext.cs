@@ -3,21 +3,15 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Travel.Models
 {
-    public class TravelContext : IdentityDbContext<ApplicationUser>
+    public class TravelContext : DbContext
     {
-
-        public DbSet<Destination> Destinations { get; set; }
-        public DbSet<Activity> Activities { get; set; }
-        public DbSet<Accomodation> Accomodations { get; set; }
-        public DbSet<Review> Reviews { get; set; }
-        public DbSet<DestinationActivity> DestinationActivity { get; set; }
-        public DbSet<DestinationAccomodation> DestinationAccomodation { get; set; }
-        public DbSet<DestinationReview> DestinationReview { get; set; }
-
+        
         public TravelContext(DbContextOptions<TravelContext> options)
           : base(options)
         {
         }
+
+        public DbSet<Destination> Destinations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -27,7 +21,11 @@ namespace Travel.Models
 
                   new Destination { DestinationId = 1, City = "London", Country = "England"},
                   new Destination { DestinationId = 2, City = "Amsterdam", Country = "Netherlands"},
-                  new Destination { DestinationId = 3, City = "Berlin", Country = "Germany"}
+                  new Destination { DestinationId = 3, City = "Berlin", Country = "Germany"},
+                  new Destination { DestinationId = 4, City = "South Pole", Country = "Antartica"},
+                  new Destination { DestinationId = 5, City = "Kyoto", Country = "Japan"},
+                  new Destination { DestinationId = 6, City = "New York City", Country = "USA"},
+                  new Destination { DestinationId = 7, City = "Ho Chi Minh", Country = "Vietnam"}
               );
         }
     }
