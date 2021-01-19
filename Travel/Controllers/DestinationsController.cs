@@ -21,9 +21,20 @@ namespace Travel.Controllers
 
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<Destination>> Get()
+        public ActionResult<IEnumerable<Destination>> Get(string city, string country)
         {
             var query = _db.Destinations.AsQueryable();
+
+            if (city != null)
+            {
+                query = query.Where(entry => entry.City == city);
+            }
+
+            if (country != null)
+            {
+                query = query.Where(entry => entry.Country == country);
+            }
+
             return query.ToList();
         }
 
