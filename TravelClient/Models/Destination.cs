@@ -24,7 +24,7 @@ namespace TravelClient.Models
 
     public static Destination GetDetails(int id)
     {
-      var apiCallTask = ApiHelper.GetAll();
+      var apiCallTask = ApiHelper.Get(id);
       var result = apiCallTask.Result;
 
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
