@@ -29,6 +29,20 @@ namespace TravelClient.Controllers
             return View(destination);
         }
 
+        public IActionResult Edit(int id)
+        {
+            var destination = Destination.GetDetails(id);
+            return View(destination);
+        }
+
+        [HttpPost]
+        public IActionResult Details(int id, Destination destination)
+        {
+            destination.DestinationId = id;
+            Destination.Put(destination);
+            return RedirectToAction("Details", id);
+        }
+
         public IActionResult Privacy()
         {
             return View();
