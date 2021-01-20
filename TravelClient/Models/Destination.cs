@@ -32,5 +32,17 @@ namespace TravelClient.Models
 
       return destination;
     }
+
+    public static void Post(Destination destination)
+    {
+      string jsonDestination = JsonConvert.SerializeObject(destination);
+      var apiCallTask = ApiHelper.Post(jsonDestination);
+    }
+
+    public static void Put(Destination destination)
+    {
+      string jsonDestination = JsonConvert.SerializeObject(destination);
+      var apiCallTask = ApiHelper.Put(destination.DestinationId, jsonDestination);
+    }
   }
 }
