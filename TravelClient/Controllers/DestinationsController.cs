@@ -23,6 +23,12 @@ namespace TravelClient.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Details(int id)
+        {
+            var destination = Destination.GetDetails(id);
+            return View(destination);
+        }
+
         public IActionResult Privacy()
         {
             return View();
