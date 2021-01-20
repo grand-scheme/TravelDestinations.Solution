@@ -1,0 +1,33 @@
+@{
+  ViewData["Title"] = "Reviews Index";
+}
+
+<h1>Reviews</h1>
+
+<ul>
+@foreach (Review review in Model)
+{
+  <ul>
+    <li>DestinationID: @review.DestinationId </li> 
+    <li>ReviewID: @review.ReviewId  </li>
+    <li>Rating: @review.Rating </li>
+    <li>Title:  @review.Title </li>
+    <li>Body: @review.Body  </li>
+  </ul>
+  <p>
+    <a href="/Reviews/Details/@(review.ReviewId)">View Review</a>
+  </p>
+}
+</ul>
+
+<form action="/reviews" method="post">
+  <label for="title">Title:</label>
+  <input id="title" name="title" type="text">
+  <label for="rating">Rating:</label>
+  <input id="rating" name="rating" type="number">
+  <label for="body">Review:</label>
+  <input id="body" name="body" type="text">
+  <label for="destination">Destination:</label>
+  <datalist id="destination">
+  <button type="submit">Add Review</button>
+</form>
