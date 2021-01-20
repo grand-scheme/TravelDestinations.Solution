@@ -11,7 +11,6 @@ namespace TravelClient.Models
     public string City { get; set; }
     public string Country { get; set; }
     
-
     public static List<Destination> GetDestinations()
     {
       var apiCallTask = ApiHelper.GetAll();
