@@ -21,5 +21,16 @@ namespace TravelClient.Models
 
       return destinationList;
     }
+
+    public static Destination GetDetails(int id)
+    {
+      var apiCallTask = ApiHelper.GetAll();
+      var result = apiCallTask.Result;
+
+      JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+      Destination destination = JsonConvert.DeserializeObject<Destination>(jsonResponse.ToString());
+
+      return destination;
+    }
   }
 }
