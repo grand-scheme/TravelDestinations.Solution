@@ -16,6 +16,13 @@ namespace TravelClient.Controllers
             return View(allDestinations);
         }
 
+        [HttpPost]
+        public IActionResult Index(Destination destination)
+        {
+            Destination.Post(destination);
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Privacy()
         {
             return View();
