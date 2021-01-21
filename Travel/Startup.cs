@@ -26,7 +26,7 @@ namespace Travel
                 opt.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddIdentity<ApplicationUser, IdentityRole()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<TravelContext>()
                     .AddDefaultTokenProviders();
 
