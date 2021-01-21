@@ -3,10 +3,14 @@ using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using Travel.Models;
 using Travel.ViewModels;
+using System.Linq;
+
 
 namespace Travel.Controllers
 {
-  public class AccountController : Controller
+  [Route("api/[controller]")]
+  [ApiController]
+  public class AccountController : ControllerBase
   {
     private readonly TravelContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
@@ -19,55 +23,42 @@ namespace Travel.Controllers
       _db = db;
     }
 
-    public ActionResult Index()
-    {
-      return View();
-    }
 
-    public ActionResult Register()
-    {
-      return View();
-    }
-
-    [HttpPost]
+    [HttpPost("register")]
     public async Task<ActionResult> Register (RegisterViewModel model)
     {
       var user = new ApplicationUser { UserName = model.Email };
       IdentityResult result = await _userManager.CreateAsync(user, model.Password);
       if (result.Succeeded)
       {
-        return RedirectToAction("Index");
+        return Created(string.Empty, string.Empty);
       }
       else
       {
-        return View();
+        return NotFound();
       }
     }
 
-    public ActionResult Login()
-    {
-        return View();
-    }
 
-    [HttpPost]
+    [HttpPost("login")]
     public async Task<ActionResult> Login(LoginViewModel model)
     {
         Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
         if (result.Succeeded)
         {
-            return RedirectToAction("Index", "Home");
+            return Ok();
         }
         else
         {
-            return View();
+            return NotFound();
         }
     }
 
-    [HttpPost]
+    [HttpPost("logoff")]
     public async Task<ActionResult> LogOff()
     {
         await _signInManager.SignOutAsync();
-        return RedirectToAction("Index", "Home");
+        return Ok();
     }
   }
 }
