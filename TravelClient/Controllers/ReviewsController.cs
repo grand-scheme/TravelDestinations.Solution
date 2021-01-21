@@ -38,9 +38,9 @@ namespace TravelClient.Controllers
         [HttpPost]
         public IActionResult Details(int id, Review review)
         {
-          review.ReviewId = id;
-          Review.Put(review);
-          return RedirectToAction("Details", id);
+            review.ReviewId = id;
+            Review.Put(review);
+            return RedirectToAction("Details", id);
         }
     }
 }
