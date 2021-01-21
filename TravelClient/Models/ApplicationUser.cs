@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace Travel.Models
+namespace TravelClient.Models
 {
   public class ApplicationUser : IdentityUser
   {
