@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Travel.Models;
 
@@ -23,6 +24,7 @@ namespace Travel.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Review>> Get()
         {
+            // ViewBag.DestinationId = new SelectList(_db.Destinations, "DestinationId", "City");
             var query = _db.Reviews.AsQueryable();
             return query.ToList();
             // NOTE: SINCE THIS IS FOR SEARCHING FOR AN INDIVIDUAL ENTRY IN THE API,
