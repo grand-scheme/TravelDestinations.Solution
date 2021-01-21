@@ -21,13 +21,19 @@
 </ul>
 
 <form action="/reviews" method="post">
+  <input type="hidden" id="destinationId" name="destinationId" value="1">
   <label for="title">Title:</label>
   <input id="title" name="title" type="text">
   <label for="rating">Rating:</label>
   <input id="rating" name="rating" type="number">
   <label for="body">Review:</label>
   <input id="body" name="body" type="text">
-  <label for="destination">Destination:</label>
-  <datalist id="destination">
   <button type="submit">Add Review</button>
 </form>
+
+@* @using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ReviewId)
+  @Html.Label("Destination")
+  @Html.DropDownList("DestinationId")
+} *@
