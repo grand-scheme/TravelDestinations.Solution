@@ -1,0 +1,10 @@
+<h1>Edit Info:</h1>
+<form action="/Destinations/Details/@(Model.DestinationId)" method="post">
+  <label for="city">City Name</label>
+  <input id="city" name="city" type="text" value="@(Model.City)">
+  <label for="country">Country Name</label>
+  <input id="country" name="country" type="text" value="@(Model.Country)">
+  <button type="submit">Update</button>
+</form>
+
+<a href="/Destinations/Details/@(Model.DestinationId)"><p>Return to Details</p></a>

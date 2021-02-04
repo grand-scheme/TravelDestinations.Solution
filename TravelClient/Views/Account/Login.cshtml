@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@using TravelClient.ViewModels
+@model LoginViewModel
+
+@using (Html.BeginForm())
+{
+  <p>
+  @Html.LabelFor(model => model.Email)
+  @Html.TextBoxFor(model => model.Email)
+  </p>
+  <p>
+  @Html.LabelFor(model => model.Password)
+  @Html.PasswordFor(model => model.Password)
+  </p>
+  <p>
+    <input type="submit" value="log in" class="btn" />
+  </p>
+}

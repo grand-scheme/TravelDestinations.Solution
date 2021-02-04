@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Travel.Models
 {
-    public class TravelContext : DbContext
+    public class TravelContext : IdentityDbContext<ApplicationUser>
     {
         
         public TravelContext(DbContextOptions<TravelContext> options)

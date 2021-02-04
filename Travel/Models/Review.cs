@@ -7,6 +7,9 @@ namespace Travel.Models
     public int ReviewId { get; set; }
     public int DestinationId { get; set; }
     [Required]
+    [StringLength(25)]
+    public string Title { get; set; }
+    [Required]
     public string Body { get; set; }
     [Required]
     [Range(0, 5, ErrorMessage = "Rating must be between 0 and 5.")]

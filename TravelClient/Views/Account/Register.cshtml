@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@using TravelClient.ViewModels
+
+@model RegisterViewModel
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+  <p>
+    @Html.LabelFor(user => user.Email)
+    @Html.TextBoxFor(user => user.Email)
+  </p>
+  <p>
+    @Html.LabelFor(user => user.Password)
+    @Html.TextBoxFor(user => user.Password)
+  </p>
+  <p>
+    @Html.LabelFor(user => user.ConfirmPassword)
+    @Html.TextBoxFor(user => user.ConfirmPassword)
+  </p>
+  <p>
+    <input type="submit" value="Register" class="btn" />
+  </p>
+}
